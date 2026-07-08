@@ -1,7 +1,14 @@
 require("telescope").setup {
+  pickers = {
+    find_files = {
+      hidden = true,            -- Include hidden files by default
+      no_ignore = false,         -- Disable reading .gitignore for find_files
+    }
+  },
   extensions = {
     file_browser = {
       initial_mode = "normal",
+      hidden = { file_browser = true, folder_browser = true },
       -- ...
     },
   },
