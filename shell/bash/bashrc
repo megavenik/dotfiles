@@ -19,7 +19,7 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; h
 # tmux autostart
 #
 # [[ $- == *i* ]] is to check if the current seession is interactive - https://superuser.com/a/1777888/136716
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ $- == *i* ]] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ $- == *i* ]] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && [ -z "$SSH_CONNECTION" ]; then
     exec tmux new-session -As0
 fi
 
